@@ -15,23 +15,26 @@ if (isDedicated) then {
 				_object = createVehicle ["Old_bike_TK_CIV_EP1", (getPosATL _player), [], 0, "NONE"];
 				_object setVariable ["ObjectID", "1"];
 				_object setVariable ["DZAI",1];
+				_object setDir (getDir _player);
 				_object setPosATL (getPosATL _player);
 				_player reveal _object;
 			};
 			case 2: {
 				//Return parts.
-				if (_target == "TT650_Civ") then {
-					_object = createVehicle ["WeaponHolder", (getPosATL _player), [], 0, "NONE"];
-					_object addMagazinecargo ["PartGeneric", 1]; 
-					_object addMagazinecargo ["PartEngine", 1];
-					_object setPosATL (getPosATL _player);
-				} else {
-					if (_target == "CSJ_GyroC") then {
+				switch (_target) do {
+					case "TT650_Civ": {
+						_object = createVehicle ["WeaponHolder", (getPosATL _player), [], 0, "NONE"];
+						_object addMagazinecargo ["PartGeneric", 1]; 
+						_object addMagazinecargo ["PartEngine", 1];
+						_object setPosATL (getPosATL _player);
+					};
+					case "CSJ_GyroC": {
 						_object = createVehicle ["WeaponHolder", (getPosATL _player), [], 0, "NONE"];
 						_object addMagazinecargo ["PartGeneric", 1]; 
 						_object addMagazinecargo ["PartVRotor", 1];
 						_object setPosATL (getPosATL _player);
 					};
+					case default {};
 				};
 			};
 			case 3: {
@@ -40,6 +43,7 @@ if (isDedicated) then {
 				_object setVariable ["ObjectID", "1"];
 				_object setVariable ["DZAI",1];
 				_object setFuel 0.5;
+				_object setDir (getDir _player);
 				_object setPosATL (getPosATL _player);
 				_player reveal _object;
 			};
@@ -49,6 +53,7 @@ if (isDedicated) then {
 				_object setVariable ["ObjectID", "1"];
 				_object setVariable ["DZAI",1];
 				_object setFuel 0.5;
+				_object setDir (getDir _player);
 				_object setPosATL (getPosATL _player);
 				_player reveal _object;
 
