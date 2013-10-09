@@ -1,6 +1,6 @@
 if !("PartGeneric" in magazines player && "PartVRotor" in magazines player) exitWith {cutText [format["You need Scrap Metal and a Main Rotor Assembly to upgrade your Motorcycle"], "PLAIN DOWN"];};
 if (dayz_combat == 1) then { 
-    cutText [format["You are in Combat and cannot build a GyroCopter."], "PLAIN DOWN"];
+    cutText [format["You are in Combat and cannot build a gyrocopter."], "PLAIN DOWN"];
 } else {
 	_startDeploy = time;
 	player removeAction s_player_deploybike;

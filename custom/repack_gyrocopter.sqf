@@ -1,5 +1,5 @@
 if (dayz_combat == 1) then { 
-    cutText [format["You are in Combat and cannot Re-Pack your gyrocopter"], "PLAIN DOWN"];
+    cutText [format["You are in Combat and cannot repack your gyrocopter"], "PLAIN DOWN"];
 } else {
 	_startDeploy = time;
 	player removeAction s_player_deploybike6;

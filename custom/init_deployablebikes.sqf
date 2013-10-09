@@ -13,7 +13,7 @@ if (isDedicated) then {
 			case 1: {
 				//Unpack old bike
 				_object = createVehicle ["Old_bike_TK_CIV_EP1", (getPosATL _player), [], 0, "NONE"];
-				_object setVariable ["ObjectID", "1"];
+				_object setVariable ["ObjectID",""];
 				_object setVariable ["DZAI",1];
 				_object setDir (getDir _player);
 				_object setPosATL (getPosATL _player);
@@ -40,7 +40,7 @@ if (isDedicated) then {
 			case 3: {
 				//Upgrade to motorbike
 				_object = createVehicle ["TT650_Civ", (getPosATL _player), [], 0, "NONE"];
-				_object setVariable ["ObjectID", "1"];
+				_object setVariable ["ObjectID",""];
 				_object setVariable ["DZAI",1];
 				_object setFuel 0.5;
 				_object setDir (getDir _player);
@@ -50,7 +50,7 @@ if (isDedicated) then {
 			case 5: {
 				//Unpack gyrocopter
 				_object = createVehicle ["CSJ_GyroC", (getPosATL _player), [], 0, "NONE"];
-				_object setVariable ["ObjectID", "1"];
+				_object setVariable ["ObjectID",""];
 				_object setVariable ["DZAI",1];
 				_object setFuel 0.5;
 				_object setDir (getDir _player);

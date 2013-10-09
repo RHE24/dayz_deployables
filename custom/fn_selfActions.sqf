@@ -90,7 +90,7 @@ _canDo = (!r_drag_sqf and !r_player_unconscious and !_onLadder);
      
     if((speed player <= 1) && _hasToolbox && _canDo) then {
             if (s_player_deploybike < 0) then {
-                    s_player_deploybike = player addaction[("<t color=""#007ab7"">" + ("Deploy Bike (Consume 1 Toolbox)") +"</t>"),"custom\deploy_bike.sqf","",5,false,true,"", ""];
+                    s_player_deploybike = player addaction[("<t color=""#007ab7"">" + ("Deploy Bike (Use 1 Toolbox)") +"</t>"),"custom\deploy_bike.sqf","",5,false,true,"", ""];
             };
     } else {
             player removeAction s_player_deploybike;
