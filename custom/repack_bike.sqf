@@ -45,7 +45,7 @@ if (dayz_combat == 1) then {
 	
 	if (_finished) then {
 		player addWeapon "ItemToolbox";
-		pvDeployables = [0,objNull,_target];
+		pvDeployables = [0,nil,_target];
 		publicVariableServer "pvDeployables";
 		
 		if ((random 1) > _targetDamage) then {

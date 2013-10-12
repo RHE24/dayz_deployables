@@ -43,7 +43,7 @@ if (dayz_combat == 1) then {
 	// Fancy cancel if interrupted addition end //
 	//////////////////////////////////////////////
 	if (_finished) then {
-		pvDeployables = [0,objNull,_target];
+		pvDeployables = [0,nil,_target];
 		publicVariableServer "pvDeployables";
 
 		sleep 2;

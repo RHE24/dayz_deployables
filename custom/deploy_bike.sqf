@@ -43,7 +43,7 @@ if (dayz_combat == 1) then {
 	
 	if (_finished) then {
 		player removeWeapon "ItemToolbox";	
-		pvDeployables = [1,player,objNull];
+		pvDeployables = [1,player,nil];
 		publicVariableServer "pvDeployables";
 		
 		cutText [format["You've used your toolbox to build a bike."], "PLAIN DOWN"];

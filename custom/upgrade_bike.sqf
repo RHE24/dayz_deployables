@@ -42,13 +42,15 @@ if (dayz_combat == 1) then {
 	// Fancy cancel if interrupted addition end //
 	////////////////////////////////////////////
 	if (_finished) then {
+		_targetPos = getPosATL _target;
+		_targetDir = getDir _target;
 		player removeMagazine "PartGeneric";
 		player removeMagazine "PartEngine";
-		pvDeployables = [0,objNull,_target];
+		pvDeployables = [0,nil,_target];
 		publicVariableServer "pvDeployables";
 
-		sleep 2;
-		pvDeployables = [3,player,objNull];
+		sleep 0.75;
+		pvDeployables = [3,player,[_targetPos,_targetDir]];
 		publicVariableServer "pvDeployables";
 		cutText [format["You've converted your bike into a motorcycle."], "PLAIN DOWN"];
 		

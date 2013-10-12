@@ -16,7 +16,8 @@ if (isDedicated) then {
 				_object setVariable ["ObjectID",""];
 				_object setVariable ["DZAI",1];
 				_object setDir (getDir _player);
-				_object setPosATL (getPosATL _player);
+				//_object setPosATL (getPosATL _player);
+				_object setPosATL (_player modelToWorld [0,1.5,0]);
 				_player reveal _object;
 			};
 			case 2: {
@@ -24,14 +25,14 @@ if (isDedicated) then {
 				switch (_target) do {
 					case "TT650_Civ": {
 						_object = createVehicle ["WeaponHolder", (getPosATL _player), [], 0, "NONE"];
-						_object addMagazinecargo ["PartGeneric", 1]; 
-						_object addMagazinecargo ["PartEngine", 1];
+						_object addMagazineCargoGlobal ["PartGeneric", 1]; 
+						_object addMagazineCargoGlobal ["PartEngine", 1];
 						_object setPosATL (getPosATL _player);
 					};
 					case "CSJ_GyroC": {
 						_object = createVehicle ["WeaponHolder", (getPosATL _player), [], 0, "NONE"];
-						_object addMagazinecargo ["PartGeneric", 1]; 
-						_object addMagazinecargo ["PartVRotor", 1];
+						_object addMagazineCargoGlobal ["PartGeneric", 1]; 
+						_object addMagazineCargoGlobal ["PartVRotor", 1];
 						_object setPosATL (getPosATL _player);
 					};
 					case default {};
@@ -39,22 +40,23 @@ if (isDedicated) then {
 			};
 			case 3: {
 				//Upgrade to motorbike
-				_object = createVehicle ["TT650_Civ", (getPosATL _player), [], 0, "NONE"];
+				_object = createVehicle ["TT650_Civ", (_target select 0), [], 0, "NONE"];
 				_object setVariable ["ObjectID",""];
 				_object setVariable ["DZAI",1];
 				_object setFuel 0.5;
-				_object setDir (getDir _player);
-				_object setPosATL (getPosATL _player);
+				_object setDir (_target select 1);
+				_object setPosATL (_target select 0);
 				_player reveal _object;
 			};
 			case 5: {
 				//Unpack gyrocopter
-				_object = createVehicle ["CSJ_GyroC", (getPosATL _player), [], 0, "NONE"];
+				_object = createVehicle ["CSJ_GyroC", (_target select 0), [], 0, "NONE"];
 				_object setVariable ["ObjectID",""];
 				_object setVariable ["DZAI",1];
-				_object setFuel 0.5;
-				_object setDir (getDir _player);
-				_object setPosATL (getPosATL _player);
+				_object setFuel (_target select 3);
+				_object setDamage (_target select 2);
+				_object setDir (_target select 1);
+				_object setPosATL (_target select 0);
 				_player reveal _object;
 
 			};

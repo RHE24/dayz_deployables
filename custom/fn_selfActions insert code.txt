@@ -1,0 +1,58 @@
+//begin deployable bike
+	
+
+    if((speed player <= 1) && cursorTarget isKindOf "CSJ_GyroC" && _canDo) then {
+    if ((s_player_deploybike6 < 0) && (isNull (driver cursorTarget))) then {
+                    s_player_deploybike6 = player addaction[("<t color=""#007ab7"">" + ("Repack Gyrocopter") +"</t>"),"custom\repack_gyrocopter.sqf",cursorTarget,5,false,true,"", ""];
+            };
+    } else {
+            player removeAction s_player_deploybike6;
+            s_player_deploybike6 = -1;
+    };
+     
+    if((speed player <= 1) && cursorTarget isKindOf "TT650_Civ" && _canDo) then {
+    if ((s_player_deploybike5 < 0) && (isNull (driver cursorTarget))) then {
+                    s_player_deploybike5 = player addaction[("<t color=""#007ab7"">" + ("Upgrade to Gyrocopter") +"</t>"),"custom\upgrade_motorbike.sqf",cursorTarget,5,false,true,"", ""];
+            };
+    } else {
+            player removeAction s_player_deploybike5;
+            s_player_deploybike5 = -1;
+    };
+     
+    if((speed player <= 1) && cursorTarget isKindOf "TT650_Civ" && _canDo) then {
+    if ((s_player_deploybike4 < 0) && (isNull (driver cursorTarget))) then {
+                    s_player_deploybike4 = player addaction[("<t color=""#007ab7"">" + ("Repack Motorcycle") +"</t>"),"custom\repack_motorbike.sqf",cursorTarget,5,false,true,"", ""];
+            };
+    } else {
+            player removeAction s_player_deploybike4;
+            s_player_deploybike4 = -1;
+    };
+     
+    if((speed player <= 1) && cursorTarget isKindOf "Old_bike_TK_CIV_EP1" && _canDo) then {
+    if ((s_player_deploybike3 < 0) && (isNull (driver cursorTarget))) then {
+                    s_player_deploybike3 = player addaction[("<t color=""#007ab7"">" + ("Upgrade to Motorcycle") +"</t>"),"custom\upgrade_bike.sqf",cursorTarget,5,false,true,"", ""];
+            };
+    } else {
+            player removeAction s_player_deploybike3;
+            s_player_deploybike3 = -1;
+    };
+     
+    if((speed player <= 1) && cursorTarget isKindOf "Old_bike_TK_CIV_EP1" && _canDo) then {
+    if ((s_player_deploybike2 < 0) && (isNull (driver cursorTarget))) then {
+                    s_player_deploybike2 = player addaction[("<t color=""#007ab7"">" + ("Repack Bike (Recover 1 Toolbox)") +"</t>"),"custom\repack_bike.sqf",cursorTarget,5,false,true,"", ""];
+            };
+    } else {
+            player removeAction s_player_deploybike2;
+            s_player_deploybike2 = -1;
+    };
+     
+    if((speed player <= 1) && _hasToolbox && _canDo) then {
+            if (s_player_deploybike < 0) then {
+                    s_player_deploybike = player addaction[("<t color=""#007ab7"">" + ("Deploy Bike (Use 1 Toolbox)") +"</t>"),"custom\deploy_bike.sqf","",5,false,true,"", ""];
+            };
+    } else {
+            player removeAction s_player_deploybike;
+            s_player_deploybike = -1;
+    };
+
+//end deployable bike

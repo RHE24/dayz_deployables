@@ -42,13 +42,17 @@ if (dayz_combat == 1) then {
 	// Fancy cancel if interrupted addition end //
 	//////////////////////////////////////////////
 	if (_finished) then {
+		_targetPos = getPosATL _target;
+		_targetDir = getDir _target;
+		_targetDam = damage _target;
+		_targetFuel = fuel _target;
 		player removeMagazine "PartGeneric";
 		player removeMagazine "PartVRotor";
-		pvDeployables = [0,objNull,_target];
+		pvDeployables = [0,nil,_target];
 		publicVariableServer "pvDeployables";
 		
-		sleep 2;
-		pvDeployables = [5,player,objNull];
+		sleep 0.75;
+		pvDeployables = [5,player,[_targetPos,_targetDir,_targetDam,_targetFuel]];
 		publicVariableServer "pvDeployables";
 		cutText [format["You've converted your motorcyle into a gyrocopter."], "PLAIN DOWN"];
 		
