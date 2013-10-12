@@ -1,4 +1,4 @@
-if !("PartGeneric" in magazines player && "PartEngine" in magazines player) exitWith {cutText [format["You need Scrap Metal and Engine part to upgrade your Bike"], "PLAIN DOWN"];};
+if !("PartGeneric" in magazines player && "PartEngine" in magazines player) exitWith {cutText [format["You need Scrap Metal and Engine part to upgrade your bike"], "PLAIN DOWN"];};
 if (dayz_combat == 1) then { 
     cutText [format["You are in Combat and cannot build a bike."], "PLAIN DOWN"];
 } else {
@@ -8,6 +8,7 @@ if (dayz_combat == 1) then {
 	_dis=10;
 	_sfx = "repair";
 	_target = _this select 3;
+	_result = "";
 	[player,_sfx,0,false,_dis] call dayz_zombieSpeak;
 	[player,_dis,true,(getPosATL player)] spawn player_alertZombies;
 	////////////////////////////////////////////////
@@ -42,17 +43,24 @@ if (dayz_combat == 1) then {
 	// Fancy cancel if interrupted addition end //
 	////////////////////////////////////////////
 	if (_finished) then {
-		_targetPos = getPosATL _target;
-		_targetDir = getDir _target;
 		player removeMagazine "PartGeneric";
 		player removeMagazine "PartEngine";
-		pvDeployables = [0,nil,_target];
-		publicVariableServer "pvDeployables";
-
-		sleep 0.75;
-		pvDeployables = [3,player,[_targetPos,_targetDir]];
-		publicVariableServer "pvDeployables";
-		cutText [format["You've converted your bike into a motorcycle."], "PLAIN DOWN"];
+		_targetDamage = damage _target;
+		if ((random 1) > _targetDamage) then {
+			_targetPos = getPosATL _target;
+			_targetDir = getDir _target;
+			pvDeployables = [0,nil,_target];
+			publicVariableServer "pvDeployables";
+			
+			sleep 0.75;
+			pvDeployables = [3,player,[_targetPos,_targetDir,_targetDamage]];
+			publicVariableServer "pvDeployables";
+			_result = "You've converted your bike into a motorcycle.";
+		} else {
+			_result = "Your bike was too badly damaged. Upgrade failed.";
+		};
+		cutText [_result, "PLAIN DOWN"];
+		
 		
 		r_interrupt = false;
 		player switchMove "";

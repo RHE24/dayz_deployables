@@ -7,7 +7,6 @@ if (dayz_combat == 1) then {
 	_dis=10;
 	_sfx = "repair";
 	_target = _this select 3;
-	_targetDamage = damage _target;
 	_result = "";
 	[player,_sfx,0,false,_dis] call dayz_zombieSpeak;
 	[player,_dis,true,(getPosATL player)] spawn player_alertZombies;
@@ -45,13 +44,14 @@ if (dayz_combat == 1) then {
 	if (_finished) then {
 		pvDeployables = [0,nil,_target];
 		publicVariableServer "pvDeployables";
-
-		sleep 2;
+		sleep 0.75;
+		
+		_targetDamage = damage _target;
 		if ((random 1) > _targetDamage) then {
 			pvDeployables = [2,player,"CSJ_GyroC"];
 			publicVariableServer "pvDeployables";
 			player addWeapon "ItemToolbox";
-			_result = "You have packed your gyrocopter. Your parts have been dropped on the ground.";
+			_result = "You have packed your gyrocopter and recovered your Toolbox and parts.";
 		} else {
 			_result = "Your gyrocopter was too badly damaged and was destroyed during salvaging.";
 		};

@@ -7,7 +7,6 @@ if (dayz_combat == 1) then {
 	_dis=10;
 	_sfx = "repair";
 	_target = _this select 3;
-	_targetDamage = damage _target;
 	_result = "";
 	[player,_sfx,0,false,_dis] call dayz_zombieSpeak;
 	[player,_dis,true,(getPosATL player)] spawn player_alertZombies;
@@ -47,10 +46,12 @@ if (dayz_combat == 1) then {
 		player addWeapon "ItemToolbox";
 		pvDeployables = [0,nil,_target];
 		publicVariableServer "pvDeployables";
+		sleep 0.75;
 		
+		_targetDamage = damage _target;
 		if ((random 1) > _targetDamage) then {
 			player addWeapon "ItemToolbox";
-			_result = "You have packed your bike and recovered your toolbox.";
+			_result = "You have packed your bike and recovered your Toolbox.";
 		} else {
 			_result = "Your bike was too badly damaged and was destroyed during salvaging.";
 		};
